@@ -1,14 +1,3 @@
-//===----------------------------------------------------------------------===//
-//
-//                         BusTub
-//
-// index_scan_executor.h
-//
-// Identification: src/include/execution/executors/index_scan_executor.h
-//
-// Copyright (c) 2015-20, Carnegie Mellon University Database Group
-//
-//===----------------------------------------------------------------------===//
 
 #pragma once
 
@@ -19,6 +8,7 @@
 #include "execution/executors/abstract_executor.h"
 #include "execution/plans/index_scan_plan.h"
 #include "storage/table/tuple.h"
+#include "storage/index/index_iterator.h"
 
 namespace bustub {
 
@@ -44,5 +34,9 @@ class IndexScanExecutor : public AbstractExecutor {
  private:
   /** The index scan plan node to be executed. */
   const IndexScanPlanNode *plan_;
+  BPlusTreeIndexForOneIntegerColumn *index_ = nullptr;
+  BPlusTreeIndexIteratorForOneIntegerColumn iterator_ ;
+  TableInfo *table_info_ = nullptr;
+  IndexInfo *index_info_ = nullptr;
 };
 }  // namespace bustub
